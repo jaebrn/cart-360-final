@@ -37,14 +37,17 @@
 #define SS_2_PIN        8
 #define SS_3_PIN        7
 #define SS_4_PIN        6
+#define SS_5_PIN        4
+#define SS_6_PIN        2
 
 // Inlocking status :
 int tagcount = 0;
 bool access = false;
 
-#define NR_OF_READERS   3
+#define NR_OF_READERS   6
+//#define MFRC522_SPICLOCK SPI_CLOCK_DIV10	
 
-byte ssPins[] = {SS_1_PIN, SS_2_PIN, SS_3_PIN, SS_4_PIN};
+byte ssPins[] = {SS_1_PIN, SS_2_PIN, SS_3_PIN, SS_4_PIN, SS_5_PIN, SS_6_PIN};
 
 // Create an MFRC522 instance :
 MFRC522 mfrc522[NR_OF_READERS];
