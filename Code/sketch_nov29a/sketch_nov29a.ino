@@ -35,17 +35,19 @@
 
 #define NR_OF_READERS   4
 //#define MFRC522_SPICLOCK SPI_CLOCK_DIV10	//If having problems, try different values here. 
-
 byte ssPins[] = {SS_1_PIN, SS_2_PIN, SS_3_PIN, SS_4_PIN}; //match reader count
-
-byte currentTags[] = {NULL,NULL,NULL,NULL}; // current tag on reader
-byte currentTag;
 
 // Create an MFRC522 instance :
 MFRC522 mfrc522[NR_OF_READERS];
 
+//values for PICC_WakeupA
 byte bufferATQA[2];
 byte bufferSize = sizeof(bufferATQA);
+
+static String definedKeys[] = {"D918CAC2", "7CBBB30"};
+static String keyValue[] = {"cat", "dog"};
+byte currentKeys[] = {};
+String reading = ""; // incoming UID
 
 void setup() {
   //Initialization:
@@ -68,7 +70,16 @@ void setup() {
 void loop() {
 
    for (uint8_t reader = 0; reader < NR_OF_READERS; reader++) { //looping through each reader
-    if(mfrc522[reader].PICC_WakeupA(bufferATQA, bufferSize) && mfrc522[reader].PICC_ReadCardSerial()){ // if a card is present..
+if(mfrc522[reader].PICC_IsNewCardPresent() && mfrc522[reader].PICC_ReadCardSerial()){ // if a card is present..
+    //Print UID info
+       Serial.print(F(": Card UID:"));
+       dump_byte_array(mfrc522[reader].uid.uidByte, mfrc522[reader].uid.size);
+       Serial.println();
+       mfrc522[reader].PICC_HaltA();
+    }   
+
+
+    else if(mfrc522[reader].PICC_WakeupA(bufferATQA, bufferSize) && mfrc522[reader].PICC_ReadCardSerial()){ // if a card is present..
     //Print UID info
        Serial.print(F(": Card UID:"));
        dump_byte_array(mfrc522[reader].uid.uidByte, mfrc522[reader].uid.size);
@@ -83,8 +94,22 @@ void loop() {
    Helper routine to dump a byte array as hex values to Serial.
 */
 void dump_byte_array(byte * buffer, byte bufferSize) {
-  for (byte i = 0; i < bufferSize; i++) {
-    Serial.print(buffer[i] < 0x10 ? " 0" : " ");
-    Serial.print(buffer[i], HEX);
+  reading = ""; // cleared reading
+
+  for (byte i = 0; i < bufferSize; i++) { 
+    reading.concat(String(buffer[i], HEX)); // concat'ing incoming data into single string
+  }
+  reading.toUpperCase();
+  Serial.print(reading);
+  verifyUID();
+}
+
+void verifyUID(){ // compares incoming reading to array of known UIDs
+  for(byte i = 0; i < sizeof(definedKeys); i++){
+    if (reading == definedKeys[i])
+    {
+      Serial.println();
+     Serial.print(keyValue[i]);
+    }
   }
 }
