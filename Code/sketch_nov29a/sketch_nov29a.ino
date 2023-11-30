@@ -33,6 +33,9 @@
 #define SS_5_PIN        4
 #define SS_6_PIN        2
 
+byte ledPins[] = {A0, A1, A2, A3, A4};
+
+
 #define NR_OF_READERS   4
 //#define MFRC522_SPICLOCK SPI_CLOCK_DIV10	//If having problems, try different values here. 
 byte ssPins[] = {SS_1_PIN, SS_2_PIN, SS_3_PIN, SS_4_PIN}; //match reader count
@@ -65,6 +68,11 @@ void setup() {
     Serial.print(F(": "));
     mfrc522[reader].PCD_DumpVersionToSerial();
   }
+
+  for(int i = 0; i < 5; i++){
+    pinMode(ledPins[i], OUTPUT);
+    digitalWrite(ledPins[i], LOW);
+  }
 }
 
 void loop() {
@@ -76,15 +84,17 @@ if(mfrc522[reader].PICC_IsNewCardPresent() && mfrc522[reader].PICC_ReadCardSeria
        dump_byte_array(mfrc522[reader].uid.uidByte, mfrc522[reader].uid.size);
        Serial.println();
        mfrc522[reader].PICC_HaltA();
+       digitalWrite(ledPins[reader], HIGH);
     }   
-
-
     else if(mfrc522[reader].PICC_WakeupA(bufferATQA, bufferSize) && mfrc522[reader].PICC_ReadCardSerial()){ // if a card is present..
     //Print UID info
        Serial.print(F(": Card UID:"));
        dump_byte_array(mfrc522[reader].uid.uidByte, mfrc522[reader].uid.size);
        Serial.println();
        mfrc522[reader].PICC_HaltA();
+       digitalWrite(ledPins[reader], HIGH);
+    }else{
+      digitalWrite(ledPins[reader], LOW);
     }   
    }
   }
