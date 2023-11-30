@@ -80,19 +80,48 @@ void loop() {
    for (uint8_t reader = 0; reader < NR_OF_READERS; reader++) { //looping through each reader
 if(mfrc522[reader].PICC_IsNewCardPresent() && mfrc522[reader].PICC_ReadCardSerial()){ // if a card is present..
     //Print UID info
-       Serial.print(F(": Card UID:"));
-       dump_byte_array(mfrc522[reader].uid.uidByte, mfrc522[reader].uid.size);
+       reading = ""; // cleared reading
+
+      for (int i = 0; i < mfrc522[reader].uid.size; i++) { 
+        reading.concat(String(mfrc522[reader].uid.uidByte[i], HEX)); // concat'ing incoming data into single string
+      }
+      reading.toUpperCase();
+      Serial.print(reading);
+      for(int i = 0; i < sizeof(definedKeys); i++){
+        if (reading == definedKeys[i])
+        {
+          Serial.println();
+          Serial.print(keyValue[i]);
+          digitalWrite(ledPins[reader], HIGH);
+        }
+  }
+       
+      // dump_byte_array(mfrc522[reader].uid.uidByte, mfrc522[reader].uid.size);
        Serial.println();
        mfrc522[reader].PICC_HaltA();
-       digitalWrite(ledPins[reader], HIGH);
+       
     }   
     else if(mfrc522[reader].PICC_WakeupA(bufferATQA, bufferSize) && mfrc522[reader].PICC_ReadCardSerial()){ // if a card is present..
     //Print UID info
-       Serial.print(F(": Card UID:"));
-       dump_byte_array(mfrc522[reader].uid.uidByte, mfrc522[reader].uid.size);
+       reading = ""; // cleared reading
+
+      for (int i = 0; i < mfrc522[reader].uid.size; i++) { 
+        reading.concat(String(mfrc522[reader].uid.uidByte[i], HEX)); // concat'ing incoming data into single string
+      }
+      reading.toUpperCase();
+      Serial.print(reading);
+      for(int i = 0; i < sizeof(definedKeys); i++){
+        if (reading == definedKeys[i])
+        {
+          Serial.println();
+          Serial.print(keyValue[i]);
+          digitalWrite(ledPins[reader], HIGH);
+        }
+  }
+       
+      // dump_byte_array(mfrc522[reader].uid.uidByte, mfrc522[reader].uid.size);
        Serial.println();
        mfrc522[reader].PICC_HaltA();
-       digitalWrite(ledPins[reader], HIGH);
     }else{
       digitalWrite(ledPins[reader], LOW);
     }   
