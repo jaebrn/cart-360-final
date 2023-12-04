@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Generator: Blender, SVG Export for Grease Pencil - v1.0 -->
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.0" x="0px" y="0px" xmlns="http://www.w3.org/2000/svg" width="709px" height="709px" viewBox="0 0 709 709">
+	<g id="blender_frame_1">
+		<g id="blender_object_GPencil.004">
+			<!--Layer: Plane_001_Fills-->
+			<g id="Plane_001_Fills">
+				<polygon fill="#6F6F6F" stroke="none" fill-opacity="1" points="194.592468,159.593262 224.885376,135.375122 187.404846,88.493286 157.111938,112.711426" />
+			</g>
+			<!--Layer: Plane_001_Lines-->
+			<g id="Plane_001_Lines">
+				<polygon fill="#6F6F6F" stroke="none" fill-opacity="1" points="157.111938,112.711426 194.592468,159.593262" />
+				<polygon fill="#6F6F6F" stroke="none" fill-opacity="1" points="194.592468,159.593262 224.885376,135.375122" />
+				<polygon fill="#6F6F6F" stroke="none" fill-opacity="1" points="224.885376,135.375122 187.404846,88.493286" />
+				<polygon fill="#6F6F6F" stroke="none" fill-opacity="1" points="187.404846,88.493286 157.111938,112.711426" />
+			</g>
+		</g>
+	</g>
+	<g id="blender_frame_1">
+		<g id="blender_object_GPencil.006">
+			<!--Layer: Plane_001_Fills-->
+			<g id="Plane_001_Fills">
+				<polygon fill="#6F6F6F" stroke="none" fill-opacity="1" points="620.316895,495.324463 640.723022,462.343079 589.680420,430.762177 569.274353,463.743530" />
+			</g>
+			<!--Layer: Plane_001_Lines-->
+			<g id="Plane_001_Lines">
+				<polygon fill="#6F6F6F" stroke="none" fill-opacity="1" points="569.274353,463.743530 620.316895,495.324463" />
+				<polygon fill="#6F6F6F" stroke="none" fill-opacity="1" points="620.316895,495.324463 640.723022,462.343079" />
+				<polygon fill="#6F6F6F" stroke="none" fill-opacity="1" points="640.723022,462.343079 589.680420,430.762177" />
+				<polygon fill="#6F6F6F" stroke="none" fill-opacity="1" points="589.680420,430.762177 569.274353,463.743530" />
+			</g>
+		</g>
+	</g>
+	<g id="blender_frame_1">
+		<g id="blender_object_bottom circle">
+			<!--Layer: Circle_Lines-->
+			<g id="Circle_Lines">
+				<polyline stroke="#000000" stroke-opacity="1" fill="none" stroke-linecap="round" stroke-width="1" points="287.505005,16.624634 354.765442,10.000000 422.025818,16.624634 486.701416,36.243713 546.306824,68.103516 598.551392,110.979553 641.427490,163.224060 673.287231,222.829468 692.906250,287.505096 699.530884,354.765503 692.906250,422.025909 673.287231,486.701538 641.427490,546.306946 598.551392,598.551514 546.306824,641.427490 486.701416,673.287231 422.025818,692.906372 354.765442,699.530945 287.505005,692.906372 222.829407,673.287231 163.224060,641.427490 110.979431,598.551514 68.103455,546.306946 36.243683,486.701538 16.624573,422.025909 10.000000,354.765503 16.624573,287.505096 36.243683,222.829468 68.103455,163.224060 110.979431,110.979553 163.224060,68.103516 222.829407,36.243713 287.505005,16.624634" />
+			</g>
+		</g>
+	</g>
+</svg>

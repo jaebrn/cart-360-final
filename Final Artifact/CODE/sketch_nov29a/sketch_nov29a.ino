@@ -1,0 +1,154 @@
+
+/**
+   --------------------------------------------------------------------------------------------------------------------
+   MULTI-RFID : MFRC522 
+   Katt Lee & Jenna Brown
+   CART360 Final Project : Echoes of the Land 
+   An RFID-Powered Interactive Soundscape of Pre-Colonial Montreal
+   --------------------------------------------------------------------------------------------------------------------
+   This is created referencing a MFRC522 library example; for further details and other examples see: https://github.com/miguelbalboa/rfid
+
+   Pin layout used:
+   -----------------------------------------------------------------------------------------
+               MFRC522      Arduino       Arduino   Arduino    Arduino          Arduino
+               Reader/PCD   Uno/101       Mega      Nano v3    Leonardo/Micro   Pro Micro
+   Signal      Pin          Pin           Pin       Pin        Pin              Pin
+   -----------------------------------------------------------------------------------------
+   RST/Reset   RST          9             5         D9         RESET/ICSP-5     RST
+   SPI MOSI    MOSI         11 / ICSP-4   51        D11        ICSP-4           16
+   SPI MISO    MISO         12 / ICSP-1   50        D12        ICSP-1           14
+   SPI SCK     SCK          13 / ICSP-3   52        D13        ICSP-3           15
+
+*/
+
+#include <SPI.h>
+#include <MFRC522.h>
+
+// PIN Numbers : RESET + SDAs
+#define RST_PIN         9
+#define SS_1_PIN        10
+#define SS_2_PIN        8
+#define SS_3_PIN        7
+#define SS_4_PIN        6
+#define SS_5_PIN        4
+#define SS_6_PIN        2
+
+byte ledPins[] = {A0, A1, A2, A3, A4};
+
+
+#define NR_OF_READERS   4
+//#define MFRC522_SPICLOCK SPI_CLOCK_DIV10	//If having problems, try different values here. 
+byte ssPins[] = {SS_1_PIN, SS_2_PIN, SS_3_PIN, SS_4_PIN}; //match reader count
+
+// Create an MFRC522 instance :
+MFRC522 mfrc522[NR_OF_READERS];
+
+//values for PICC_WakeupA
+byte bufferATQA[2];
+byte bufferSize = sizeof(bufferATQA);
+
+static String definedKeys[] = {"D918CAC2", "7CBBB30"};
+static String keyValue[] = {"cat", "dog"};
+byte currentKeys[] = {};
+String reading = ""; // incoming UID
+
+void setup() {
+  //Initialization:
+
+  Serial.begin(9600);           // Initialize serial communications with the PC
+  while (!Serial);              // Do nothing if no serial port is opened (added for Arduinos based on ATMEGA32U4)
+
+  SPI.begin();                  // Init SPI bus
+
+  /* looking for MFRC522 readers */
+  for (uint8_t reader = 0; reader < NR_OF_READERS; reader++) {
+    mfrc522[reader].PCD_Init(ssPins[reader], RST_PIN);
+    Serial.print(F("Reader "));
+    Serial.print(reader);
+    Serial.print(F(": "));
+    mfrc522[reader].PCD_DumpVersionToSerial();
+  }
+
+  for(int i = 0; i < 5; i++){
+    pinMode(ledPins[i], OUTPUT);
+    digitalWrite(ledPins[i], LOW);
+  }
+}
+
+void loop() {
+
+   for (uint8_t reader = 0; reader < NR_OF_READERS; reader++) { //looping through each reader
+if(mfrc522[reader].PICC_IsNewCardPresent() && mfrc522[reader].PICC_ReadCardSerial()){ // if a card is present..
+    //Print UID info
+       reading = ""; // cleared reading
+
+      for (int i = 0; i < mfrc522[reader].uid.size; i++) { 
+        reading.concat(String(mfrc522[reader].uid.uidByte[i], HEX)); // concat'ing incoming data into single string
+      }
+      reading.toUpperCase();
+      Serial.print(reading);
+      for(int i = 0; i < sizeof(definedKeys); i++){
+        if (reading == definedKeys[i])
+        {
+          Serial.println();
+          Serial.print(keyValue[i]);
+          digitalWrite(ledPins[reader], HIGH);
+        }
+  }
+       
+      // dump_byte_array(mfrc522[reader].uid.uidByte, mfrc522[reader].uid.size);
+       Serial.println();
+       mfrc522[reader].PICC_HaltA();
+       
+    }   
+    else if(mfrc522[reader].PICC_WakeupA(bufferATQA, bufferSize) && mfrc522[reader].PICC_ReadCardSerial()){ // if a card is present..
+    //Print UID info
+       reading = ""; // cleared reading
+
+      for (int i = 0; i < mfrc522[reader].uid.size; i++) { 
+        reading.concat(String(mfrc522[reader].uid.uidByte[i], HEX)); // concat'ing incoming data into single string
+      }
+      reading.toUpperCase();
+      Serial.print(reading);
+      for(int i = 0; i < sizeof(definedKeys); i++){
+        if (reading == definedKeys[i])
+        {
+          Serial.println();
+          Serial.print(keyValue[i]);
+          digitalWrite(ledPins[reader], HIGH);
+        }
+  }
+       
+      // dump_byte_array(mfrc522[reader].uid.uidByte, mfrc522[reader].uid.size);
+       Serial.println();
+       mfrc522[reader].PICC_HaltA();
+    }else{
+      digitalWrite(ledPins[reader], LOW);
+    }   
+   }
+  }
+
+
+/**
+   Helper routine to dump a byte array as hex values to Serial.
+*/
+void dump_byte_array(byte * buffer, byte bufferSize) {
+  reading = ""; // cleared reading
+
+  for (byte i = 0; i < bufferSize; i++) { 
+    reading.concat(String(buffer[i], HEX)); // concat'ing incoming data into single string
+  }
+  reading.toUpperCase();
+  Serial.print(reading);
+  verifyUID();
+}
+
+void verifyUID(){ // compares incoming reading to array of known UIDs
+  for(byte i = 0; i < sizeof(definedKeys); i++){
+    if (reading == definedKeys[i])
+    {
+      Serial.println();
+     Serial.print(keyValue[i]);
+    }
+  }
+}

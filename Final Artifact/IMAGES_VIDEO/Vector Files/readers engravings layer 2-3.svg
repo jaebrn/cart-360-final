@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Generator: Blender, SVG Export for Grease Pencil - v1.0 -->
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.0" x="0px" y="0px" xmlns="http://www.w3.org/2000/svg" width="709px" height="709px" viewBox="0 0 709 709">
+	<g id="blender_frame_1">
+		<g id="blender_object_GPencil.005">
+			<!--Layer: Plane_001_Fills-->
+			<g id="Plane_001_Fills">
+				<polygon fill="#6F6F6F" stroke="none" fill-opacity="1" points="463.523804,235.315674 488.316406,265.140320 534.473511,226.770874 509.680908,196.946289" />
+			</g>
+			<!--Layer: Plane_001_Lines-->
+			<g id="Plane_001_Lines">
+				<polygon fill="#6F6F6F" stroke="none" fill-opacity="1" points="509.680908,196.946289 463.523804,235.315674" />
+				<polygon fill="#6F6F6F" stroke="none" fill-opacity="1" points="463.523804,235.315674 488.316406,265.140320" />
+				<polygon fill="#6F6F6F" stroke="none" fill-opacity="1" points="488.316406,265.140320 534.473511,226.770874" />
+				<polygon fill="#6F6F6F" stroke="none" fill-opacity="1" points="534.473511,226.770874 509.680908,196.946289" />
+			</g>
+		</g>
+	</g>
+	<g id="blender_frame_1">
+		<g id="blender_object_GPencil.007">
+			<!--Layer: Plane_001_Fills-->
+			<g id="Plane_001_Fills">
+				<polygon fill="#6F6F6F" stroke="none" fill-opacity="1" points="421.741333,469.766846 453.871948,448.045715 420.256042,398.319794 388.125427,420.040894" />
+			</g>
+			<!--Layer: Plane_001_Lines-->
+			<g id="Plane_001_Lines">
+				<polygon fill="#6F6F6F" stroke="none" fill-opacity="1" points="388.125427,420.040894 421.741333,469.766846" />
+				<polygon fill="#6F6F6F" stroke="none" fill-opacity="1" points="421.741333,469.766846 453.871948,448.045715" />
+				<polygon fill="#6F6F6F" stroke="none" fill-opacity="1" points="453.871948,448.045715 420.256042,398.319794" />
+				<polygon fill="#6F6F6F" stroke="none" fill-opacity="1" points="420.256042,398.319794 388.125427,420.040894" />
+			</g>
+		</g>
+	</g>
+	<g id="blender_frame_1">
+		<g id="blender_object_GPencil.008">
+			<!--Layer: Plane_001_Fills-->
+			<g id="Plane_001_Fills">
+				<polygon fill="#6F6F6F" stroke="none" fill-opacity="1" points="210.760254,553.451172 243.798157,573.765564 275.237122,522.635437 242.199158,502.321045" />
+			</g>
+			<!--Layer: Plane_001_Lines-->
+			<g id="Plane_001_Lines">
+				<polygon fill="#6F6F6F" stroke="none" fill-opacity="1" points="242.199158,502.321045 210.760254,553.451172" />
+				<polygon fill="#6F6F6F" stroke="none" fill-opacity="1" points="210.760254,553.451172 243.798157,573.765564" />
+				<polygon fill="#6F6F6F" stroke="none" fill-opacity="1" points="243.798157,573.765564 275.237122,522.635437" />
+				<polygon fill="#6F6F6F" stroke="none" fill-opacity="1" points="275.237122,522.635437 242.199158,502.321045" />
+			</g>
+		</g>
+	</g>
+	<g id="blender_frame_1">
+		<g id="blender_object_GPencil.009">
+			<!--Layer: Plane_001_Fills-->
+			<g id="Plane_001_Fills">
+				<polygon fill="#6F6F6F" stroke="none" fill-opacity="1" points="138.638855,424.904724 154.783936,460.168274 209.358521,435.181885 193.213440,399.918335" />
+			</g>
+			<!--Layer: Plane_001_Lines-->
+			<g id="Plane_001_Lines">
+				<polygon fill="#6F6F6F" stroke="none" fill-opacity="1" points="193.213440,399.918335 138.638855,424.904724" />
+				<polygon fill="#6F6F6F" stroke="none" fill-opacity="1" points="138.638855,424.904724 154.783936,460.168274" />
+				<polygon fill="#6F6F6F" stroke="none" fill-opacity="1" points="154.783936,460.168274 209.358521,435.181885" />
+				<polygon fill="#6F6F6F" stroke="none" fill-opacity="1" points="209.358521,435.181885 193.213440,399.918335" />
+			</g>
+		</g>
+	</g>
+	<g id="blender_frame_1">
+		<g id="blender_object_bottom circle">
+			<!--Layer: Circle_Lines-->
+			<g id="Circle_Lines">
+				<polyline stroke="#000000" stroke-opacity="1" fill="none" stroke-linecap="round" stroke-width="1" points="287.505005,16.624634 354.765442,10.000000 422.025818,16.624634 486.701416,36.243713 546.306824,68.103516 598.551392,110.979553 641.427490,163.224060 673.287231,222.829468 692.906250,287.505096 699.530884,354.765503 692.906250,422.025909 673.287231,486.701538 641.427490,546.306946 598.551392,598.551514 546.306824,641.427490 486.701416,673.287231 422.025818,692.906372 354.765442,699.530945 287.505005,692.906372 222.829407,673.287231 163.224060,641.427490 110.979431,598.551514 68.103455,546.306946 36.243683,486.701538 16.624573,422.025909 10.000000,354.765503 16.624573,287.505096 36.243683,222.829468 68.103455,163.224060 110.979431,110.979553 163.224060,68.103516 222.829407,36.243713 287.505005,16.624634" />
+			</g>
+		</g>
+	</g>
+</svg>
